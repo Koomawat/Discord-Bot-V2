@@ -1,3 +1,6 @@
+// Command registering global based script from:
+// https://discordjs.guide/interactions/registering-slash-commands.html#global-commands
+
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 const { token } = require('./config.json');
@@ -18,7 +21,8 @@ const rest = new REST({ version: '9' }).setToken(token);
 		console.log('Started refreshing application (/) commands.');
 
 		await rest.put(
-			Routes.applicationGuildCommands("583814740443398149", "576530869142028388"),
+            // Client ID (BOT)
+			Routes.applicationCommands("583814740443398149"),
 			{ body: commands },
 		);
 
